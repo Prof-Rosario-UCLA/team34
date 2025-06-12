@@ -12,6 +12,10 @@ RUN npm install
 
 COPY --chown=node:node . .
 
+RUN ./src/rust/manage-rust.sh
+
+RUN npm run build:rs
+
 EXPOSE 5173
 
 CMD [ "npm", "run", "dev", "--", "--host" ]
